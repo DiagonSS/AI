@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Калькулятор ухода за газоном и изгородью</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="page-header">
+    <h1>Калькулятор стоимости сервиса по уходу за газоном</h1>
+    <p class="lead">Введите параметры участка, чтобы увидеть 3D-визуализацию и расчёт стоимости визита.</p>
+  </header>
+
+  <main class="layout">
+    <section class="inputs">
+      <form id="calc-form">
+        <fieldset>
+          <legend>Параметры участка</legend>
+          <label>
+            Площадь газона (м²)
+            <input type="number" name="S_gazon" id="S_gazon" min="0" step="1" value="120" required />
+          </label>
+          <label>
+            Длина изгороди (м)
+            <input type="number" name="L_izgorod" id="L_izgorod" min="0" step="1" value="80" required />
+          </label>
+          <label>
+            Высота изгороди (м)
+            <input type="number" name="H_izgorod" id="H_izgorod" min="0" step="0.1" value="2" required />
+          </label>
+          <label>
+            Средняя ширина верха изгороди (м)
+            <input type="number" name="W_top" id="W_top" min="0" step="0.1" value="0.5" />
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Дополнительные опции</legend>
+          <label class="checkbox">
+            <input type="checkbox" name="waste_disposal" id="waste_disposal" checked />
+            Утилизация отходов
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="is_commercial" id="is_commercial" />
+            Коммерческий участок
+          </label>
+          <label>
+            Расстояние до участка (км)
+            <input type="number" name="distance_km" id="distance_km" min="0" step="1" value="8" />
+          </label>
+        </fieldset>
+        <button type="submit">Рассчитать</button>
+      </form>
+
+      <section class="results" aria-live="polite">
+        <h2>Результаты</h2>
+        <dl>
+          <div>
+            <dt>Время на газон:</dt>
+            <dd id="result-gazon">—</dd>
+          </div>
+          <div>
+            <dt>Время на изгородь:</dt>
+            <dd id="result-hedge">—</dd>
+          </div>
+          <div>
+            <dt>Общее время визита:</dt>
+            <dd id="result-total">—</dd>
+          </div>
+          <div class="highlight">
+            <dt>Итоговая стоимость:</dt>
+            <dd id="result-price">—</dd>
+          </div>
+        </dl>
+      </section>
+    </section>
+
+    <section class="visualization">
+      <h2>3D визуализация участка</h2>
+      <div id="renderer-container"></div>
+      <p class="hint">Поворачивайте сцену мышью или касанием, чтобы рассмотреть участок под разными углами.</p>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <p>Расчёт основан на тарифах Манчестера 2025 года. Все значения указаны в часах и фунтах стерлингов.</p>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
